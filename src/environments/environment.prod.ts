@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  JSON_BASE_PATH: process.env.JSON_BASE_PATH
+  JSON_BASE_PATH: "https://json-server-pl8g.onrender.com"
 };
