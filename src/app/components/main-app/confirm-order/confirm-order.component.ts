@@ -36,7 +36,7 @@ export class ConfirmOrderComponent implements OnInit {
     this.calculateTotalPriceAndTax();
     this.authenticationService.currentUser.subscribe((user) => {
       this.currentUser = user
-      if(user.address.length!==0){
+      if(user.address && user.address.length!==0){
         this.isAddressPresent = false;  
       }
     });

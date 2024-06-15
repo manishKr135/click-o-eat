@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // JSON_BASE_PATH: "http://localhost:3000" 
+  JSON_BASE_PATH: "https://json-server-pl8g.onrender.com" 
 };
 
 /*

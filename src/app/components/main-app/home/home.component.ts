@@ -10,7 +10,7 @@ import { FoodService } from 'src/app/services/food.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public foodList: IFoodDetails[]
+  public foodList: IFoodDetails[];
   public searchText: string;
   public addToCardModal: boolean;
   public foodItem: IFoodDetails
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     private modalService: NgbModal
     
     ) {
-    this.foodList = {} as IFoodDetails[];
+    this.foodList = [] as IFoodDetails[];
     this.searchText = "";
     this.addToCardModal = false;
     this.foodItem = {} as IFoodDetails;
