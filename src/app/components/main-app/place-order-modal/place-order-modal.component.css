@@ -1,0 +1,20 @@
+.action-btn{
+    background-color: rgb(13, 65, 49) ;
+    color: aliceblue;
+    border-radius: 20px;
+
+}
+.action-btn:hover{
+    background-color: aliceblue;
+    border:1px solid rgba(253, 168, 40);
+    color: rgb(13, 65, 49);
+}
+
+button{
+    margin-left: 37%;
+}
+
+.card{
+    width: 28rem; 
+    margin: 20px;
+}

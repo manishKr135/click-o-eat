@@ -1,0 +1,108 @@
+
+<div class="container">
+    <div>
+        <ng-container *ngIf="confirmOrderList[0]; then List; else Empty">
+
+        </ng-container>
+    </div>
+    <div class="right-part" *ngIf="!disabled">
+        <div class="card  mb-3">
+            <div class="card-header  text-center text-white">Review Order</div>
+            <div class="cost-details">
+              <div class="cost-details-items">
+                <div >
+                  <p><b>Subtotal(# Item)</b></p>
+                </div>
+                <div>
+                  <p>{{itemTotal | currency: "INR"}}</p>
+                </div>
+              </div>
+              <div class="cost-details-items">
+                <div >
+                  <p><b>Tax</b></p>
+                </div>
+                <div>
+                  <p>{{tax | currency: "INR"}}</p>
+                </div>
+              </div>
+               <div class="cost-details-items">
+                <div >
+                  <p>Shipping</p>
+                </div>
+                <div>
+                  <p>{{shippingCharge | currency: "INR"}}</p>
+                </div> 
+               </div>
+               <div class="cost-details-items border-top border-bottom">
+                <div >
+                  <p>Order Total</p>
+                </div>
+                <div>
+                  <p>{{itemTotal + tax + shippingCharge  | currency: "INR"}}</p>
+                </div> 
+               </div>
+
+            </div>
+            <div class="mx-auto bg-transparent ">
+              <a [ngClass]="{'inactiveLink':isAddressPresent}" routerLink="/placeorder">
+                <button [disabled]="isAddressPresent" class="btn action-btn">Checkout/Place Order</button>
+              </a>
+            </div>
+          </div>
+          <div class="add-details">
+            <div>
+              <a class="btn action-btn " routerLink="/settings/useraddaddress">
+                <p>Add Address</p> 
+              </a>
+            </div>
+            <div>
+              <a class="btn action-btn" routerLink="/settings/useraddpaymentdetails">
+                <p>Add Payment Details</p> 
+              </a>
+            </div>
+          </div>
+    </div>
+</div>
+
+<ng-template #Empty>
+  
+    <p class="empty-cart">Oops!!! You haven't added any item to your cart.</p>
+</ng-template>
+
+<ng-template #List>
+  <div class="cart">
+    <div  class="cart-title">
+      <p >Current Cart</p>
+    </div> 
+    <div>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Your Card:</th>
+          <th scope="col"># Item</th>
+          <th scope="col">Base Price</th>
+          <th scope="col">QTY</th>
+          <th scope="col">Item Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let listItem of confirmOrderList">
+          <td>
+              <img src={{listItem.imageUrl}} alt="">
+          </td>
+          <td>
+              <p>{{listItem.foodName | titlecase}}</p>
+              <p>{{listItem.desc | titlecase}}</p>
+          </td>
+          <td>{{ listItem.basePrice }}</td>
+          <td>{{ listItem.quantity }}</td>
+          <td>{{ listItem.itemPrice }}</td>
+          <td>
+              <button class="btn action-btn" (click)="removeItem(listItem)">Remove</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> 
+</ng-template>

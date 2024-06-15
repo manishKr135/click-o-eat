@@ -1,0 +1,53 @@
+.form-outline{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.container{
+    position: relative;
+    left: -150px;
+    display: flex;
+    width: 1000px;
+    max-width: 1000px;
+    flex-wrap: wrap;
+   
+}
+
+.searchbar{
+    border-radius: 20px;
+}
+
+.card{
+    border-radius: 10px;
+    padding: 5px;
+    width: 17.5rem; 
+    margin: 17px;
+    background-color: rgba(255, 255, 255, 0.952);
+    box-shadow: 5px 5px 5px #dde4e4, -5px -5px 5px #dde4e4;
+}
+
+.info{
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.952);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #dde4e4, -5px -5px 5px #dde4e4;
+}
+.float-right{
+    margin: 5px 0px 0px 460px;
+}
+
+.action-btn{
+    background-color: rgba(253, 168, 40) ;
+    color: aliceblue;
+    border-radius: 20px;
+}
+
+.action-btn:hover{
+    background-color: aliceblue;
+    border:1px solid rgba(253, 168, 40);
+    color: rgba(253, 168, 40);
+}
+
+.cancel{
+    margin-right: 45%; 
+    border-radius: 20px;
+}

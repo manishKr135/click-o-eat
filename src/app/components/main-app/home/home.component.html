@@ -1,0 +1,38 @@
+<div class="form-outline">
+    <input type="text" class="form-control searchbar" placeholder="Search Food/Restaurant" aria-label="Search" [(ngModel)]='searchText' 
+    (ngModelChange)="initializeFoodList()"
+    />
+</div>
+<div class="container">
+    <div class="card"*ngFor="let foodItem of foodList">
+        <h3 class="card-title">{{foodItem.restaurant | titlecase}}</h3>
+        <img class="card-img-top" src={{foodItem.imageUrl}} alt="restraunt_image">
+        <div class="card-body">
+          <div class="info">
+            <h5>{{foodItem.dishName | titlecase}}</h5>
+            <p class="card-text">{{foodItem.description | titlecase}}</p>
+            <p class="card-text">Rating: {{foodItem.rating}}</p>
+            <p class="card-text">Cost: {{foodItem.cost}}</p>
+          </div>
+          <br>
+          <button  class="btn action-btn" (click)="addToCart(Cart, foodItem)">Add To Cart</button>&nbsp;
+          <button class="btn action-btn" (click)="placeOrder(PlaceOrder, foodItem)">Place Order</button>
+        </div>
+      </div> 
+</div>
+
+<ng-template #Cart let-modal>
+  <button type="button" class="btn-close float-right" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  <add-to-cart-modal [selectedFoodItem]="foodItem"></add-to-cart-modal>
+  <div class="modal-footer" >
+    <button type="button" class="btn btn-outline-danger cancel" (click)="modal.close()">Cancel</button>
+  </div>
+</ng-template>
+
+<ng-template #PlaceOrder let-modal>
+  <button type="button" class="btn-close float-right" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  <place-order-modal [selectedFoodItem]="foodItem"></place-order-modal>
+  <div class="modal-footer" >
+    <button type="button" class="btn btn-outline-danger cancel"  (click)="modal.close()">Cancel</button>
+  </div>
+</ng-template>

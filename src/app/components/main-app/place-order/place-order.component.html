@@ -1,0 +1,195 @@
+<div class="form-outline">
+    <br>
+    <h3>Order Id</h3>
+    <input type="text" class="form-control searchbar" placeholder="Enter Order Id" aria-label="Search" [(ngModel)]='searchText' 
+    />
+    <br>
+    <button class="btn action-btn" (click)="getOrderHistory()">Get Order</button>
+</div>
+<div class="order-status" *ngIf="showOrderHistory">
+   <ng-container *ngIf="orderHistory; then OrderHistory; else NotFound">
+
+   </ng-container>
+</div>
+
+<ng-template #NotFound>
+    <h4>OOPS!!! No order history found.</h4>
+</ng-template>
+
+<ng-template #OrderHistory>
+    <h4>Order History:</h4>
+    <div class="card">
+        <div class="card-header">
+          <h4>User Id: {{orderHistory.userid}}</h4>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">Feed Id: {{orderHistory.feedId}}</h4>
+          <h4 class="card-title">Payment Status: {{orderHistory.paymentStatus}}</h4>
+          <h4 class="card-title">Order Status: {{orderHistory.orderstatus}}</h4>
+        
+        </div>
+        <div class="card-header">
+            <h4>Your order was successfully delivered.</h4>
+          </div>
+      </div>
+</ng-template>
+
+<div class="order-status" *ngIf="showOrderStatus">
+    <h4>You order status:</h4>
+    <div class="card">
+        <div class="card-header">
+          <h3>User Id: {{orderDetails.userid}}</h3>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Feed Id: {{orderDetails.feedId}}</h5>
+          <h5 class="card-title">Payment Status: {{orderDetails.paymentStatus}}</h5>
+          <h5 class="card-title">Order Status: {{orderDetails.orderstatus}}</h5>
+          <h5 class="card-title">Order Time: {{orderDetails.orderDateTime}}</h5>
+        
+        </div>
+        <div class="card-header">
+            <h3>Your order has been successfully placed.</h3>
+          </div>
+      </div>
+</div>
+<ng-template #paymentModal let-modal>
+    <div class="container" >
+        <div class="card" style="width: 18rem;"  #bankBtn>
+            <h2>Pay With</h2>
+            <ul class="list-group list-group-flush" >
+                <li class="list-group-item" > <input [ngModel]="'Bank'" [autofocus]="true" type="button" class="btn action-btn options" (click)="changeOption('bank')" /></li>
+                <li class="list-group-item" ><input [ngModel]="'Card'" type="button" class="btn action-btn options" (click)="changeOption('card')" /></li>
+                <li class="list-group-item"><input [ngModel]="'Via QR'" type="button" class="btn action-btn options" (click)="changeOption('qr')" /></li>
+            </ul>
+          </div>
+          
+        <div class="card right-part" >
+            <div class="info">
+                <p>{{currentUser.email}}</p>
+                <h3>Pay <span style="color: rgb(103, 156, 23);">{{itemTotal | currency}}</span></h3>
+            </div>
+            <div class="card-header ">
+              <p class="text-center">Pay</p>
+            </div>
+           
+                <ng-container [ngSwitch]="payOpt">
+                <ng-containter  *ngSwitchCase="'bank'" [ngTemplateOutlet]="Bank" ></ng-containter>
+                <ng-containter  *ngSwitchCase="'card'" [ngTemplateOutlet]="Card" ></ng-containter>
+                <ng-containter  *ngSwitchCase="'qr'" [ngTemplateOutlet]="Qr" ></ng-containter>
+                </ng-container>
+           
+            
+            <button [disabled]="disabled" class="btn btn-success" style="margin-top: auto;" (click)="placeOrder()">Pay</button>
+        </div>
+    </div>
+    
+</ng-template>
+
+<ng-template #Bank>
+    <div class="modal-header" >
+        <h4  >Enter bank details to pay</h4>    
+    </div>
+    <div class="form">
+    <form [formGroup]="bankForm" autocomplete="off" >
+            
+           
+        <div class="col-md-6">
+            <p><b>Bank Name</b></p>
+            <div class="fields">
+
+                <input  id="houseNo" type="text" formControlName="bankName" class="form-control" [ngClass]="{ 'is-invalid': bankFormControls['bankName'].errors && bankFormControls['bankName'].touched }"  placeholder="Bank Name"/> &nbsp;
+                <div *ngIf="bankFormControls['bankName'].errors" class="invalid-feedback"   >
+                    <div *ngIf="bankFormControls['bankName'].errors['required']">Bank Name is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p><b>Account Holder Name</b></p>
+            <div class="fields">
+
+                <input id="city" type="text" formControlName="accHolderName" class="form-control" [ngClass]="{ 'is-invalid': bankFormControls['accHolderName'].errors && bankFormControls['accHolderName'].touched}" placeholder="Account holder name"/>&nbsp;
+                <div *ngIf="bankFormControls['accHolderName'].errors" class="invalid-feedback">
+                    <div *ngIf="bankFormControls['accHolderName'].errors['required']">Account Holder Name is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p><b>Account Number</b></p>
+            <div class="fields">
+
+                <input formControlName="accNo" type="text" class="form-control"  placeholder="Acount Number"  id="accNo"
+            [ngClass]="{ 'is-invalid': bankFormControls['accNo'].errors && bankFormControls['accNo'].touched}"/> &nbsp;
+            <div *ngIf="bankFormControls['accNo'].errors" class="invalid-feedback">
+              <div *ngIf="bankFormControls['accNo'].errors['required']">Account number is required</div>
+              
+            </div>
+            </div>
+        </div>
+ 
+    </form>
+    </div>
+</ng-template>
+
+<ng-template #Card>
+    <div class="wrapper"  *ngIf="currentUser.payment[0]">
+        <span (click)="clickCard()">
+            <img 
+            class="credit-card"
+            width="150px"
+            height="100px"
+            src="https://raw.githubusercontent.com/gregoiresgt/payment-icons/master/Assets/Credit%20Card/MasterCard/MasterCard-light.png" 
+            alt="card">
+        </span>
+    </div>
+    <div *ngIf="!selectCard">
+        <div class="modal-header" >
+            <h4  >Enter your card details to pay</h4>    
+        </div>
+    <div class="form">
+        <form [formGroup]="cardForm"  autocomplete="off">       
+        <div class="col-md-6">
+            <p><b>Credit Card Number</b></p>
+            <div class="fields">
+    
+                <input id="cardNo" type="text" pattern="[0-9]+" formControlName="cardNo" class="form-control" [ngClass]="{ 'is-invalid': cardFormControls['cardNo'].errors && cardFormControls['cardNo'].touched}" placeholder="0000 0000 0000 0000"/>&nbsp;
+                <div *ngIf="cardFormControls['cardNo'].errors" class="invalid-feedback">
+                    <div *ngIf="cardFormControls['cardNo'].errors['required']">Card Number is required</div>
+                    <div *ngIf="cardFormControls['cardNo'].errors['minlength']">Card Number must be of length 16 </div>
+                    <div *ngIf="cardFormControls['cardNo'].errors['pattern']">Card Number must be numeric </div>
+                </div>
+            </div>
+        </div>
+       <div class="details">
+       
+        <div class="col-md-6">
+            <p><b>Year</b></p>
+            <input placeholder="Enter Year" formControlName="year" class="form-control" id="year" [ngClass]="{ 'is-invalid': cardFormControls['year'].errors && cardFormControls['year'].touched}" />
+    
+            <div *ngIf="cardFormControls['year'].errors" class="invalid-feedback">
+                <div *ngIf="cardFormControls['year'].errors['required']">Year is required</div>
+            </div>
+        </div>
+    
+        <div class="col-md-6">
+            <p><b>CVV/CVC</b></p>
+            <div>
+                <input id="cvv" type="text" pattern="[0-9]+" formControlName="cvv" class="form-control" [ngClass]="{ 'is-invalid': cardFormControls['cvv'].errors && cardFormControls['cvv'].touched}" placeholder="Enter CVV"/>&nbsp;
+                <div *ngIf="cardFormControls['cvv'].errors" class="invalid-feedback">
+                    <div *ngIf="cardFormControls['cvv'].errors['required']">CVV is required</div>
+                    <div *ngIf="cardFormControls['cvv'].errors['minlength'] ||cardFormControls['cvv'].errors['maxlength']">Card Number must be of length 3 </div>
+                    <div *ngIf="cardFormControls['cvv'].errors['pattern']">Card Number must be numeric </div>
+                </div>
+            </div>
+        </div>
+       </div>
+       </form>
+       </div>
+    </div>
+</ng-template>
+
+<ng-template #Qr>
+    <div class="qr">
+        <p>Scan to Pay</p>
+        <img src="https://www.gravatar.com/205e460b479e2e5b48aec07710c08d50.qr?s=350" alt="qrCode">
+    </div>
+</ng-template>

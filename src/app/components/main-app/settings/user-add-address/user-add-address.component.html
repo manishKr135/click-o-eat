@@ -1,0 +1,79 @@
+<div class="edit">
+    <button [ngClass]="{ 'btn pencil ': !edit, 'btn green-pencil': edit }" (click)="toggleEdit()"></button>
+</div>
+<ng-container *ngIf="edit; then Edit; else View">
+    
+</ng-container>
+
+<ng-template #View>
+    <div *ngIf="!currentUser.address[0]" style="padding: 20px;">
+        <p >No details available</p>
+    </div>
+    <div class="wrapper"  *ngIf="currentUser.address[0]">
+        <div>
+            <p><b>House Number</b></p>
+            <p>{{currentUser.address[0].houseNo}}</p>
+        </div>
+        <div>
+            <p><b>City</b></p>
+            <p>{{currentUser.address[0].city}}</p>
+        </div>
+        <div>
+            <p><b>State</b></p>
+            <p>{{currentUser.address[0].state}}</p>
+        </div>
+        <div>
+            <p><b>Landmark</b></p>
+            <p>{{currentUser.address[0].landmark}}</p>
+        </div>
+    </div>
+
+</ng-template>
+
+<ng-template #Edit>
+    <div class="wrapper" >
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()"  autocomplete="off"> 
+        <div class="col-md-6">
+            <p><b>House Number</b></p>
+            <div class="fields">
+                <input  id="houseNo" type="text" formControlName="houseNo" class="form-control" [ngClass]="{ 'is-invalid': userFormControls['houseNo'].errors && userFormControls['houseNo'].touched }"  placeholder="House Number"/> &nbsp;
+                <div *ngIf="userFormControls['houseNo'].errors" class="invalid-feedback"   >
+                    <div *ngIf="userFormControls['houseNo'].errors['required']">House Numer is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p><b>City</b></p>
+            <div class="fields">
+                <input id="city" type="text" formControlName="city" class="form-control" [ngClass]="{ 'is-invalid': userFormControls['city'].errors && userFormControls['city'].touched}" placeholder="City"/>&nbsp;
+                <div *ngIf="userFormControls['city'].errors" class="invalid-feedback">
+                    <div *ngIf="userFormControls['city'].errors['required']">City is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p><b>State</b></p>
+            <div class="fields">
+                <input formControlName="state" type="text" class="form-control"  placeholder="State"  id="state"
+                [ngClass]="{ 'is-invalid': userFormControls['state'].errors && userFormControls['state'].touched}"/> &nbsp;
+                <div *ngIf="userFormControls['state'].errors" class="invalid-feedback">
+                <div *ngIf="userFormControls['state'].errors['required']">State is required</div>  
+            </div>
+        </div>
+        </div>
+        <div class="col-md-6">
+            <p><b>Landmark</b></p>
+            <div class="fields">
+                <input id="landmark" formControlName="landmark" type="text" class="form-control" placeholder="Landmark" [ngClass]="{ 'is-invalid': userFormControls['landmark'].errors && userFormControls['landmark'].touched}"/>&nbsp;
+                <div *ngIf="userFormControls['landmark'].errors" class="invalid-feedback">
+                    <div *ngIf="userFormControls['landmark'].errors['required']">Landmark is required</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <button [disabled]="disabled" type="submit" class="btn action-btn">Submit</button>
+    </form>
+    </div>
+
+</ng-template>
+

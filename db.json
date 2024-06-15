@@ -1,0 +1,207 @@
+{
+  "users": [
+    {
+      "firstname": "Manish",
+      "lastname": "Kumar",
+      "email": "man@gmail.com",
+      "password": "112211",
+      "cpassword": "112211",
+      "disclaimer": true,
+      "id": "1",
+      "address": [
+        {
+          "houseNo": "121",
+          "city": "Dhanbad",
+          "state": "Jharkhand",
+          "landmark": "Gandhi Nagar"
+        }
+      ],
+      "payment": [
+        {
+          "name": "Manish",
+          "cardNo": "1111111111111111",
+          "month": "10",
+          "year": "2023",
+          "cvv": "123"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "firstname": "Manish",
+      "lastname": "Kumar",
+      "email": "mann135@gmail.com",
+      "password": "12345678",
+      "cpassword": "12345678",
+      "disclaimer": true
+    }
+  ],
+  "foodList": [
+    {
+      "id": "1",
+      "restaurant": "reddys biriyani zone",
+      "dishName": "roasted chicken biriyani",
+      "description": "Indian Restaurant",
+      "rating": 4,
+      "cost": 190,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg"
+    },
+    {
+      "id": "2",
+      "restaurant": "kabablo",
+      "dishName": "Cajun spiced chicken",
+      "description": "Indian Restaurant",
+      "rating": 4.1,
+      "cost": 230,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg"
+    },
+    {
+      "id": "3",
+      "restaurant": "main land china",
+      "dishName": "Veg Momos",
+      "description": "Chineese Restaurant",
+      "rating": 3.9,
+      "cost": 250,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg"
+    },
+    {
+      "id": "4",
+      "restaurant": "beijing bites",
+      "dishName": "cripy fried chicken momos",
+      "description": "Chineese Restaurant",
+      "rating": 4.2,
+      "cost": 180,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg"
+    },
+    {
+      "id": "5",
+      "restaurant": "mcdonald's",
+      "dishName": "American cheese burger",
+      "description": "American Restaurant",
+      "rating": 3.9,
+      "cost": 260,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg"
+    },
+    {
+      "id": "6",
+      "restaurant": "KFC",
+      "dishName": "KFC chicken bucket",
+      "description": "American Restaurant",
+      "rating": 4.1,
+      "cost": 599,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg"
+    },
+    {
+      "id": "7",
+      "restaurant": "home kitchen services",
+      "dishName": "mix non veg noodles",
+      "description": "Chineese Restaurant",
+      "rating": 3.9,
+      "cost": 100,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg"
+    },
+    {
+      "id": "8",
+      "restaurant": "hotel shalimar",
+      "dishName": "chicken fried rice",
+      "description": "chineese Restaurant",
+      "rating": 4.4,
+      "cost": 190,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg"
+    },
+    {
+      "id": "9",
+      "restaurant": "al arabia",
+      "dishName": "Chicken shawarma",
+      "description": "Lebaneese style Restaurant",
+      "rating": 4.2,
+      "cost": 120,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg"
+    },
+    {
+      "id": "10",
+      "restaurant": "al bek",
+      "dishName": "Alfaham Chicken",
+      "description": "Lebaneese style Restaurant",
+      "rating": 4.1,
+      "cost": 230,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg"
+    },
+    {
+      "id": "8",
+      "restaurant": "hotel shalimar",
+      "dishName": "chicken fried rice",
+      "description": "chineese Restaurant",
+      "rating": 4.4,
+      "cost": 190,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg"
+    },
+    {
+      "id": "9",
+      "restaurant": "al arabia",
+      "dishName": "Chicken shawarma",
+      "description": "Lebaneese style Restaurant",
+      "rating": 4.2,
+      "cost": 120,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg"
+    },
+    {
+      "id": "10",
+      "restaurant": "al bek",
+      "dishName": "Alfaham Chicken",
+      "description": "Lebaneese style Restaurant",
+      "rating": 4.1,
+      "cost": 230,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg"
+    },
+    {
+      "feedId": 14,
+      "restaurant": "reddys biriyani zone",
+      "dishName": "roasted chicken biriyani",
+      "description": "Indian Restaurant",
+      "rating": 4,
+      "cost": 190,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg",
+      "id": "11"
+    },
+    {
+      "feedId": 14,
+      "restaurant": "reddys biriyani zone",
+      "dishName": "roasted chicken biriyani",
+      "description": "Indian Restaurant",
+      "rating": 4,
+      "cost": 190,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg",
+      "id": "12"
+    },
+    {
+      "feedId": 16,
+      "restaurant": "reddys biriyani zone",
+      "dishName": "roasted chicken biriyani",
+      "description": "Indian Restaurant",
+      "rating": 4,
+      "cost": 190,
+      "unique": 0.5204481863089581,
+      "imageUrl": "https://user-images.githubusercontent.com/52235198/161415728-34de9a3c-a4c1-4ea8-aca6-27fdea84b8ac.jpg",
+      "id": "13"
+    }
+  ],
+  "orders": [
+    {
+      "userid": 1,
+      "feedId": 1,
+      "orderstatus": "placed",
+      "paymentStatus": "paid",
+      "orderDateTime": "4/5/2022:5:19:00 PM",
+      "id": "1"
+    },
+    {
+      "id": "ac6d",
+      "userid": 2,
+      "feedId": 1,
+      "orderstatus": "placed",
+      "paymentStatus": "paid",
+      "orderDateTime": "6/15/2024:4:20:48 PM"
+    }
+  ]
+}

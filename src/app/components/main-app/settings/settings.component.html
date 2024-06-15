@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="card  left-part">
+        <img height="250px"src="https://gravatar.com/avatar/559c992ac2c183be88c4eab5af93a64b?s=200&d=robohash&r=x" alt="profile_image">
+        <div class="card-header">
+            <h2>{{currentUser.firstname}}</h2>&nbsp;&nbsp;
+            <h2>{{currentUser.lastname}}</h2>
+         
+        </div>
+        <ul class="list-group list-group-flush" >
+          <li class="list-group-item" routerLinkActive="active"> <a class="nav-item nav-link" routerLink="/settings/userprofile" >Profile</a></li>
+          <li class="list-group-item" routerLinkActive="active"><a class="nav-item nav-link" routerLink="/settings/useraddaddress" >Address</a></li>
+          <li class="list-group-item" routerLinkActive="active"><a class="nav-item nav-link" routerLink="/settings/useraddpaymentdetails" >Payment Details</a></li>
+          <li class="list-group-item" ><a class="nav-item nav-link" routerLink="/home" >Go To Home Page</a></li>
+        </ul>
+    </div>
+    <div class="card right-part" >
+        <div class="card-header">
+          <h3>Your Information</h3>
+        </div>
+        <ul class="list-group list-group-horizontal" >
+            <li class="list-group-item" routerLinkActive="active"> <a class="nav-item nav-link" routerLink="/settings/userprofile" >View / Update Profile</a></li>
+            <li class="list-group-item" routerLinkActive="active"><a class="nav-item nav-link" routerLink="/settings/useraddaddress" >Add / Update Address</a></li>
+            <li class="list-group-item" routerLinkActive="active"><a class="nav-item nav-link" routerLink="/settings/useraddpaymentdetails" >Add / Update Payment Details</a></li> 
+        </ul>
+        <router-outlet></router-outlet>
+      </div>
+</div>
+

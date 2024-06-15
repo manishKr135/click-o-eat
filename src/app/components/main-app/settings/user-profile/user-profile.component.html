@@ -1,0 +1,75 @@
+<div class="edit">
+    <button [ngClass]="{ 'btn pencil ': !edit, 'btn green-pencil': edit }" (click)="toggleEdit()"></button>
+</div>
+<ng-container *ngIf="edit; then Edit; else View">
+    
+</ng-container>
+
+<ng-template #View>
+    <div class="wrapper">
+
+        <div>
+            <p><b>First Name</b></p>
+            <p>{{currentUser.firstname}}</p>
+        </div>
+        <div>
+            <p><b>Last Name</b></p>
+            <p>{{currentUser.lastname}}</p>
+        </div>
+        <div>
+            <p><b>Email Address</b></p>
+            <p>{{currentUser.email}}</p>
+        </div>
+    </div>
+
+</ng-template>
+
+<ng-template #Edit>
+    <div class="wrapper" >
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" autocomplete="off"> 
+        <div class="col-md-6">
+            <p><b>First Name</b></p>
+            <div class="fields">
+
+                <input  id="firstname" type="text" formControlName="firstname" class="form-control" [ngClass]="{ 'is-invalid': userFormControls['firstname'].errors && userFormControls['firstname'].touched }"  placeholder="First Name"/> &nbsp;
+                <div *ngIf="userFormControls['firstname'].errors" class="invalid-feedback"   >
+                    <div *ngIf="userFormControls['firstname'].errors['required']">First Name is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p><b>Last Name</b></p>
+            <div class="fields">
+                <input id="lastname" type="text" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': userFormControls['lastname'].errors && userFormControls['lastname'].touched }" placeholder="Last Name"/>&nbsp;
+                <div *ngIf="userFormControls['lastname'].errors" class="invalid-feedback">
+                    <div *ngIf="userFormControls['lastname'].errors['required']">Last Name is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p><b>Email Address</b></p>
+            <div class="fields">
+                <input formControlName="email" type="email" class="form-control"  placeholder="Email"  id="email"
+            [ngClass]="{ 'is-invalid': userFormControls['email'].errors && userFormControls['email'].touched}"/> &nbsp;
+            <div *ngIf="userFormControls['email'].errors" class="invalid-feedback">
+              <div *ngIf="userFormControls['email'].errors['required']">Email is required</div>
+              <div *ngIf="userFormControls['email'].errors['email']">Please enter valid email</div>
+            </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p><b>Password</b></p>
+            <div class="fields">
+                <input id="password" formControlName="password" type="password" class="form-control" placeholder="Password" [ngClass]="{ 'is-invalid': userFormControls['password'].errors && userFormControls['password'].touched}"/>&nbsp;
+            <div *ngIf="userFormControls['password'].errors" class="invalid-feedback">
+              <div *ngIf="userFormControls['password'].errors['required']">password is required</div>
+              <div *ngIf="userFormControls['password'].errors['minlength']">Password must be of length 6 or more</div>
+            </div>
+            </div>
+        </div>
+        <br>
+        <button [disabled]="disabled" type="submit" class="btn action-btn">Submit</button>
+    </form>
+    </div>
+</ng-template>
+

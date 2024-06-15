@@ -1,0 +1,38 @@
+.wrapper{
+    margin: 20px 0px 0px 50px;
+}
+.details{
+    display: flex;
+    width: 400px;
+    justify-content: space-between;
+}
+
+
+
+button{
+    border-radius: 20px;
+}
+.action-btn{
+    background-color: rgba(253, 168, 40) ;
+    border-radius: 20px;
+    color: aliceblue;
+
+}
+.action-btn:hover{
+    background-color: aliceblue;
+    border:1px solid rgba(253, 168, 40);
+    color: rgba(253, 168, 40);
+}
+
+.fields{
+    display: flex
+}
+
+.credit-card-container{
+    float: right; 
+    margin-top: 20%;
+}
+.credit-card{
+    border: 3px solid gray; 
+    border-radius: 180px;
+}

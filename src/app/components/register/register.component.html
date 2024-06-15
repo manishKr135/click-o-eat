@@ -1,0 +1,71 @@
+<div class="container">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <h3> Register</h3>
+    <app-alert></app-alert>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="firstname">First Name</label>
+        <input id="firstname" type="text" formControlName="firstname" class="form-control" [ngClass]="{ 'is-invalid': userFormControls['firstname'].errors && userFormControls['firstname'].touched}"  placeholder="First Name"/>
+        <div *ngIf="userFormControls['firstname'].errors" class="invalid-feedback">
+            <div *ngIf="userFormControls['firstname'].errors['required']">First Name is required</div>
+        </div>
+      </div>
+      </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="lastname">Last Name</label>
+        <input id="lastname" type="text" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': userFormControls['lastname'].errors && userFormControls['lastname'].touched }" placeholder="Last Name"/>
+        <div *ngIf="userFormControls['lastname'].errors" class="invalid-feedback">
+            <div *ngIf="userFormControls['lastname'].errors['required']">Last Name is required</div>
+        </div>
+      </div>
+      </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="email">Email</label>
+        <input formControlName="email" type="email" class="form-control"  placeholder="Email"  id="email"
+        [ngClass]="{ 'is-invalid': userFormControls['email'].errors && userFormControls['email'].touched}"/>
+        <div *ngIf="userFormControls['email'].errors" class="invalid-feedback">
+          <div *ngIf="userFormControls['email'].errors['required']">Email is required</div>
+          <div *ngIf="userFormControls['email'].errors['email']">Please enter valid email</div>
+      </div>
+      </div>
+      <div class="form-group col-md-12">
+        <label for="password">Password</label>
+        <input id="password" formControlName="password" type="password" class="form-control" placeholder="Password" [ngClass]="{ 'is-invalid': userFormControls['password'].errors && userFormControls['password'].touched}"/>
+        <div *ngIf="userFormControls['password'].errors" class="invalid-feedback">
+          <div *ngIf="userFormControls['password'].errors['required']">password is required</div>
+          <div *ngIf="userFormControls['password'].errors['minlength']">Password must be of length 6 or more</div>
+    
+      </div>
+      </div>
+      <div class="form-group col-md-12">
+        <label for="cpassword">Confirm Password</label>
+        <input id="cpassword" formControlName="cpassword" type="password" class="form-control"  placeholder="Confirm Password" [ngClass]="{ 'is-invalid': userFormControls['cpassword'].errors && userFormControls['cpassword'].touched}"/>
+        <div *ngIf="userFormControls['cpassword'].errors" class="invalid-feedback">
+          <div *ngIf="userFormControls['cpassword'].errors['required']">cpassword is required</div>
+          <div *ngIf="userFormControls['cpassword'].errors['mustMatch']">Password should match</div>
+      </div>
+      </div>
+    </div>
+   <br>
+    <div class="form-group">
+      <div class="form-check">
+        <input formControlName="disclaimer" class="form-check-input" type="checkbox"  id="disclaimer">
+        <label class="form-check-label" for="disclaimer">
+         I accept the Terms of Use & Privacy Policy
+        </label>
+      </div>
+    </div>
+    <br>
+    <button [disabled]="disabled" type="submit" class="btn action-btn">Register Now</button>
+   
+  </form>
+  
+  <br>
+  <div class="links">
+    <p>Already have an account?
+      <a routerLink="/login" class="btn btn-link"><b>Login</b></a>
+    </p>
+  </div>
+</div>

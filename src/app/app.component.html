@@ -1,0 +1,44 @@
+<ng-container *ngIf="!this.currentUser; then guest; else user">
+
+</ng-container>
+
+
+<ng-template #guest>
+  <nav class="navbar  sticky-top navbar-expand"  >
+    <div class="navbar-nav">
+      <p class="title">Click'O'Eat</p>
+    </div>
+  </nav>
+</ng-template>
+<ng-template #user>
+  <nav class="navbar sticky-top navbar-expand"  >
+    <div class="navbar-nav">
+      <a class=" title-link " routerLink="/home"><p class="title logged-in">Click'O'Eat</p></a>
+    </div>
+    <div style="margin-left: 55%;"  >
+      <ul class="list-group list-group-horizontal" >
+        <li class="list-group-item logged-in" routerLinkActive="active"><a class="nav-item nav-link" routerLink="/confirmorder" >Confirm Order</a></li>
+        <li class="list-group-item logged-in" routerLinkActive="active"><a class="nav-item nav-link" routerLink="/placeorder" >Track Order</a></li>
+        <li class="list-group-item logged-in" routerLinkActive="active">
+          <a class="nav-item nav-link " routerLink="/settings/userprofile" >
+            <span class="" routerLink="/settings" >
+              Setings
+            </span>
+          </a>
+        </li>
+        <li class="list-group-item logged-in" routerLinkActive="active"><a class="nav-item nav-link" (click)="logout()" >Logout</a></li>
+      </ul>
+    </div>  
+  </nav>
+</ng-template>
+
+<div class="jumbotron">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">  
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<footer></footer>
+</div>

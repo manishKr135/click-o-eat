@@ -1,0 +1,21 @@
+.page-footer{
+    position: fixed;
+    bottom: 0;
+    background-color: rgb(13, 65, 49);
+    height: 30px;
+    width: 100vw;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 5px 4px rgba(0, 0, 0, 0.3) inset;
+}
+
+.copyright{
+    margin-top: -20px;
+}
+
+.date{
+    display: flex;
+    margin-top: -10px; 
+}

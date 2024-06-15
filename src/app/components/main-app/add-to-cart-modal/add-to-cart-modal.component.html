@@ -1,0 +1,10 @@
+<div class="card">
+    <h3 class="card-title">{{selectedFoodItem.restaurant| titlecase}}</h3>
+    <img class="card-img-top" src={{selectedFoodItem.imageUrl}} alt="restraunt_image">
+    <div class="card-body">
+      <h5>{{selectedFoodItem.dishName| titlecase}}</h5>
+      <p class="card-text">{{selectedFoodItem.description| titlecase}}</p>  
+      <p class="card-text">Cost: {{selectedFoodItem.cost}}</p>
+    </div>
+</div>
+<button type="button"  class="btn action-btn" (click)="addItem(selectedFoodItem)">Confirm Add to Cart</button>

@@ -1,0 +1,86 @@
+
+.container{
+    display:  flex;
+    width: 250rem;
+    height: 700px;
+    padding: 20px;
+    justify-content: space-between;
+    margin-left: -350px;
+    background-color: aliceblue;
+}
+
+.options{
+    width: 150px;
+}
+.options:focus{
+    background-color: rgb(13, 65, 49);
+}
+
+.right-part{
+    width: 90rem;
+   
+}
+
+.form{
+    margin-left: 20rem;
+}
+
+.info{
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    left: 80%;
+}
+
+.modal-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.order-status{
+    margin-left: -20vw;
+    margin-top: 30px;
+    width: 80vw;
+    background-color: rgba(255, 255, 255, 0.952);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #dde4e4, -5px -5px 5px #dde4e4;
+    padding: 10px;
+}
+
+.searchbar{
+    border-radius: 20px;
+}
+.action-btn{
+    background-color: rgba(253, 168, 40) ;
+    color: aliceblue;
+    border-radius: 20px;
+
+}
+.action-btn:hover{
+    background-color: aliceblue;
+    border:1px solid rgba(253, 168, 40);
+    color: rgba(253, 168, 40);
+}
+
+.card{
+    width: 99%
+}
+
+.credit-card{
+    border: 3px solid gray; 
+    border-radius: 180px;
+}
+
+.fields{
+    display: flex
+}
+
+.qr{
+    margin-top: 8%; 
+    margin-left: 20rem;
+}
+
+.qr > p{
+    margin-left: 8rem;
+}

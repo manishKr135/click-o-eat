@@ -1,0 +1,97 @@
+
+<ng-container *ngIf="edit; then Edit; else View">
+    
+</ng-container>
+
+<ng-template #View>
+    <div *ngIf="!currentUser.payment[0]" style="padding: 20px;">
+        <p >No details available</p>
+        <span class="btn action-btn" (click)="toggleEdit()">Add Card</span>
+    </div>
+    <div class="wrapper"  *ngIf="currentUser.payment[0]">
+        <span (click)="toggleEdit()">
+            <img 
+            class="credit-card"
+            width="150px"
+            height="100px"
+            src="https://raw.githubusercontent.com/gregoiresgt/payment-icons/master/Assets/Credit%20Card/MasterCard/MasterCard-light.png" 
+            alt="card">
+        </span>
+    </div>
+
+</ng-template>
+
+<ng-template #Edit>
+    <div class="credit-card-container"  *ngIf="currentUser.payment[0]">
+        <span (click)="toggleEdit()">
+            <img 
+            class="credit-card"
+            width="150px"
+            height="100px"
+            src="https://raw.githubusercontent.com/gregoiresgt/payment-icons/master/Assets/Credit%20Card/MasterCard/MasterCard-light.png" 
+            alt="card">
+        </span>
+    </div>
+    <div class="wrapper" >
+        <p>Enter your card details</p>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" autocomplete="off" >   
+        <div class="col-md-6">
+            <p><b>Name</b></p>
+            <div class="fields">
+                <input  id="name" type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': userFormControls['name'].errors && userFormControls['name'].touched}"  placeholder="Enter your name"/> &nbsp;
+                <div *ngIf="userFormControls['name'].errors" class="invalid-feedback"   >
+                    <div *ngIf="userFormControls['name'].errors['required']">Name is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p><b>Credit Card Number</b></p>
+            <div class="fields">
+                <input id="cardNo" type="text" pattern="[0-9]+" formControlName="cardNo" class="form-control" [ngClass]="{ 'is-invalid': userFormControls['cardNo'].errors && userFormControls['cardNo'].touched}" placeholder="0000 0000 0000 0000"/>&nbsp;
+                <div *ngIf="userFormControls['cardNo'].errors" class="invalid-feedback">
+                    <div *ngIf="userFormControls['cardNo'].errors['required']">City is required</div>
+                    <div *ngIf="userFormControls['cardNo'].errors['minlength']">Card Number must be of length 16 </div>
+                    <div *ngIf="userFormControls['cardNo'].errors['pattern']">Card Number must be numeric </div>
+                </div>
+            </div>
+        </div>
+       <div class="details">
+        <div>
+            <p><b>Month</b></p>
+            <select formControlName="month" class="form-control" id="month" [ngClass]="{ 'is-invalid': userFormControls['month'].errors && userFormControls['month'].touched }" >
+                <option>Month</option>
+                <option *ngFor="let month of months">{{month}}</option>
+            </select>
+            <div *ngIf="userFormControls['month'].errors" class="invalid-feedback">
+                <div *ngIf="userFormControls['month'].errors['required']">Month is required</div>
+            </div>
+        </div>
+        <div>
+            <p><b>Year</b></p>
+            <select formControlName="year" class="form-control" id="year" [ngClass]="{ 'is-invalid': userFormControls['year'].errors && userFormControls['year'].touched}" >
+                <option>Year</option>
+                <option *ngFor="let year of years">{{year}}</option>
+            </select>
+            <div *ngIf="userFormControls['year'].errors" class="invalid-feedback">
+                <div *ngIf="userFormControls['year'].errors['required']">Year is required</div>
+            </div>
+        </div>
+
+        <div>
+            <p><b>CVV/CVC</b></p>
+            <div>
+                <input id="cvv" type="text" pattern="[0-9]+" formControlName="cvv" class="form-control" [ngClass]="{ 'is-invalid': userFormControls['cvv'].errors && userFormControls['cvv'].touched}" placeholder="Enter CVV"/>&nbsp;
+                <div *ngIf="userFormControls['cvv'].errors" class="invalid-feedback">
+                    <div *ngIf="userFormControls['cvv'].errors['required']">CVV is required</div>
+                    <div *ngIf="userFormControls['cvv'].errors['minlength'] ||userFormControls['cvv'].errors['maxlength']">Card Number must be of length 3 </div>
+                    <div *ngIf="userFormControls['cvv'].errors['pattern']">Card Number must be numeric </div>
+                </div>
+            </div>
+        </div>
+       </div>
+        <button [disabled]="disabled"  class="btn action-btn" (click)="onAddCard()">Add Card</button> &nbsp;
+        <button class="btn btn-danger" (click)="formReset()">Reset</button>
+    </form>
+    </div>
+</ng-template>
+
